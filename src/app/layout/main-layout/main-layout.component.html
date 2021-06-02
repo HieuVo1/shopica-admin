@@ -2,8 +2,8 @@
   <nz-sider class="menu-sidebar" nzCollapsible="true" nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
     [nzTrigger]="null">
     <div class="sidebar-logo">
-      <a href="http://localhost:4200/admin" target="_blank">
-        <img src="https://ng.ant.designassets/img/logo.svg" alt="logo">
+      <a [routerLink]="['/admin/dashboard']">
+        <img src="assets/images/logo2.svg" alt="logo">
         <h1>Shopica Seller Center</h1>
       </a>
     </div>
