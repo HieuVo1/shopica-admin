@@ -1,0 +1,43 @@
+<nz-modal [(nzVisible)]="isVisible" nzOkText="OK" nzClassName="form-modal" [nzTitle]="modalTitle" [nzClosable]="false"
+  [nzOkDisabled]="baseForm.invalid || !isHaveFile" [nzOkLoading]="isLoadingButton" (nzOnCancel)="cancelModal()"
+  (nzOnOk)="submitForm()">
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="baseForm">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzFor="sizeName">Select Category</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzErrorTip="Please input your Category name!">
+          <nz-select (ngModelChange)="changeCategory($event)" [nzDropdownRender]="renderTemplate"
+            [nzLoading]="isLoadingCategoryInSelect" formControlName="categoryName" nzShowSearch nzAllowClear
+            nzPlaceHolder="Select a Category">
+            <nz-option nzCustomContent *ngFor="let item of categories" [nzLabel]="item.categoryName" [nzValue]="item">
+              <div class="select-category-item">
+                <p>{{item.categoryName}}</p>
+                <img [src]="item.image" height="30px" alt="">
+              </div>
+            </nz-option>
+          </nz-select>
+          <ng-template #renderTemplate>
+            <nz-divider></nz-divider>
+            <div class="input-container">
+              <input type="text" nz-input #inputElement />
+              <a class="add-item" (click)="addItem(inputElement)"><i nz-icon nzType="plus"></i> Add item</a>
+            </div>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7">Category Image</nz-form-label>
+        <nz-form-control [nzSpan]="14" class="form-upload-image">
+          <nz-upload [(nzFileList)]="fileList" [nzDisabled]="fileList.length > 0"
+            [nzFileType]="'image/png,image/jpeg,image/gif,image/bmp'" nzName="files" [nzSpan]="6"
+            [nzAction]="backEndUrl" (nzChange)="handleChange($event)">
+            <button class="upload-btn" nz-button><i nz-icon nzType="upload"></i>Click to
+              Upload</button>
+          </nz-upload>
+        </nz-form-control>
+      </nz-form-item>
+
+    </form>
+  </ng-container>
+</nz-modal>
