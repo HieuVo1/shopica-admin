@@ -76,6 +76,7 @@ export class ProductDetailComponent implements OnInit {
       .subscribe(res => {
         if (res.code == "OK") {
           const product = res.data;
+
           this.productForm.controls.productName.setValue(product.productName);
           this.productForm.controls.price.setValue(product.price);
           this.productForm.controls.categoryId.setValue(product.categoryId);
