@@ -91,8 +91,6 @@ export class ProductDetailComponent implements OnInit {
             };
           });
 
-          console.log(product.productDetails);
-
           this.listProductDetail = [...product.productDetails];
           this.loadColorSizeSelected(product.productDetails)
         }
