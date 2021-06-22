@@ -59,6 +59,7 @@ export class RegisterComponent implements OnInit {
         const data = {
           ...this.sellerRegisterObject,
           imageUrl: `https://ui-avatars.com/api/?background=random&name=${this.sellerRegisterObject.fullName.trimStart().substring(0, 1)}`,
+          logo: `https://ui-avatars.com/api/?background=random&name=${formData.storeName.trimStart().substring(0, 1)}`,
           ...formData
         };
 
