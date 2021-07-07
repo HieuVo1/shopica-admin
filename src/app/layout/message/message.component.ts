@@ -95,9 +95,11 @@ export class MessageComponent implements OnInit {
     this.messageService.getAllConversations(this.accountId).subscribe(res => {
       if (res.isSuccess) {
         this.conversations = res.data;
-        this.conversationSelected = this.conversations[0];
-        this.openConversation(this.conversationSelected);
-        this.changeDetector.detectChanges();
+        if (this.conversations.length > 0) {
+          this.conversationSelected = this.conversations[0];
+          this.openConversation(this.conversationSelected);
+          this.changeDetector.detectChanges();
+        }
       }
     })
   }
@@ -133,9 +135,9 @@ export class MessageComponent implements OnInit {
       content: this.content,
       senderImage: this.utilitiesService.getImage(),
       senderName: this.storeName,
-      conversation_id: this.conversationSelected.id,
+      conversation_id: this.conversationSelected?.id,
       sender_id: this.accountId,
-      receive_id: this.conversationSelected.receive_id
+      receive_id: this.conversationSelected?.receive_id
     }
 
     this.messageService.sendMessage(messageRequest).subscribe(res => {

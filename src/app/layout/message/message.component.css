@@ -42,6 +42,10 @@
   overflow: hidden;
 }
 
+.message-frame.no-message.show {
+  width: 300px;
+}
+
 .message-frame.show {
   width: 600px;
   height: 400px;
@@ -71,6 +75,12 @@
   overflow: hidden;
   overflow-y: auto;
   margin-bottom: 10px;
+}
+
+.all-conversations .conversations .no-message {
+  text-align: center;
+  margin-top: 20px;
+  color: #878787;
 }
 
 .header {

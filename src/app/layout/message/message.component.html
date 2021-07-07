@@ -5,8 +5,8 @@
   </nz-badge>
 </div>
 
-<div nz-row [class.show]="isShowMessagesFrame" class="message-frame">
-  <div nz-col [nzSpan]="13" class="conversation-detail flex fd-column">
+<div nz-row [class.no-message]="!conversationSelected" [class.show]="isShowMessagesFrame" class="message-frame">
+  <div *ngIf="conversationSelected" nz-col [nzSpan]="13" class="conversation-detail flex fd-column">
     <div class="header">
       <div class="avatar mr-5">
         <img height="30" width="30" [src]="conversationSelected?.conversationImage" alt="avatar">
@@ -56,13 +56,14 @@
           nzTheme="outline"></i></div>
     </div>
   </div>
-  <div nz-col [nzSpan]="11" class="all-conversations flex fd-column">
+  <div nz-col [nzSpan]="conversationSelected ? 11 : 24" class="all-conversations flex fd-column">
     <div class="header flex jc-space-between al-center">
       <p class="title"><i nz-icon nzType="message" nzTheme="outline"></i>Messages</p>
       <div (click)="isShowMessagesFrame = false" class="close-btn"><i nz-icon nzType="close" nzTheme="outline"></i>
       </div>
     </div>
     <div class="conversations custom-scroll-bar">
+      <div class="no-message" *ngIf="!conversationSelected">You don't have any message</div>
       <div [class.active]="conversationSelected?.id == conversation.id" (click)="openConversation(conversation)"
         *ngFor="let conversation of conversations" class="conversation-item flex al-center">
         <div class="avatar mr-10">
@@ -73,7 +74,8 @@
             [class.un-read]="conversation.lastMessage && conversation.lastMessage.sender_id != accountId && !conversation.lastMessage?.isRead"
             class=" shop-info flex fd-column">
             <span class="shop-name">{{conversation.conversationTitle}}</span>
-            <span class="last-message">{{conversation.lastMessage?.content}}</span>
+            <span class="last-message">{{conversation.lastMessage?.sender_id == accountId ? 'You: '
+              :''}}{{conversation.lastMessage?.content}}</span>
           </div>
           <div
             [class.un-read]="conversation.lastMessage && conversation.lastMessage.sender_id != accountId && !conversation.lastMessage?.isRead"

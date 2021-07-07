@@ -7,7 +7,7 @@ export const environment = {
   userServiceUrl: "https://user-service-net.herokuapp.com",
   orderServiceUrl: "https://order-service-net.herokuapp.com",
   productServiceUrl: "https://backend-java-api.herokuapp.com",
-  messageServiceUrl: 'https://aspnetclusters-37333-0.cloudclusters.net',
+  messageServiceUrl: 'https://localhost:5003',
   localUserServiceUrl: "https://localhost:5001",
   localOrderServiceUrl: "https://localhost:5002",
   localMessageServiceUrl: 'https://localhost:5003',
