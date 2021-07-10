@@ -1,3 +1,4 @@
+import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzMessageModule } from 'ng-zorro-antd/message';
@@ -42,6 +43,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
     FormsModule,
     NzMessageModule,
     NzInputModule,
+    NzImageModule,
     RouterModule.forChild(mainRoutes),
     NzIconModule.forChild(icons),
   ],

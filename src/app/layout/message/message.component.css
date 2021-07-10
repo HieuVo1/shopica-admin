@@ -362,6 +362,7 @@ p {
   max-height: 200px;
   overflow: hidden;
   overflow-y: auto;
+  flex: 1 0 auto;
 }
 
 .attachment {
